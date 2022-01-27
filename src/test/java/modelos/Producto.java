@@ -3,6 +3,7 @@ package modelos;
 import modelos.Almacen;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Producto {
     private int identificador;
@@ -80,6 +81,31 @@ public class Producto {
 
     public void setAlmacen(Almacen almacen) {
         this.almacen = almacen;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Producto producto = (Producto) o;
+        return identificador == producto.identificador && Objects.equals(codigo, producto.codigo) && Objects.equals(descripcion, producto.descripcion) && Objects.equals(fechacaducidad, producto.fechacaducidad) && tipoproducto2 == producto.tipoproducto2 && Objects.equals(almacen, producto.almacen);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(identificador, codigo, descripcion, fechacaducidad, tipoproducto2, almacen);
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "identificador=" + identificador +
+                ", codigo='" + codigo + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", fechacaducidad=" + fechacaducidad +
+                ", tipoproducto2=" + tipoproducto2 +
+                ", almacen=" + almacen +
+                '}';
     }
 }
 

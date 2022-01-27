@@ -1,5 +1,7 @@
 package modelos;
 
+import java.util.Objects;
+
 public class Cliente {
     private int identificador;
     private String dni;
@@ -65,5 +67,29 @@ public class Cliente {
 
     public void setTipocliente(TipoCliente tipocliente) {
         this.tipocliente = tipocliente;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cliente cliente = (Cliente) o;
+        return identificador == cliente.identificador && Objects.equals(dni, cliente.dni) && Objects.equals(apellidos, cliente.apellidos) && Objects.equals(direccion, cliente.direccion) && tipocliente == cliente.tipocliente;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(identificador, dni, apellidos, direccion, tipocliente);
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "identificador=" + identificador +
+                ", dni='" + dni + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", tipocliente=" + tipocliente +
+                '}';
     }
 }

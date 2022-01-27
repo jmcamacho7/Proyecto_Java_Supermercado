@@ -1,5 +1,7 @@
 package modelos;
 
+import java.util.Objects;
+
 public class Almacen {
     private int identificador;
     private String nombre;
@@ -43,5 +45,27 @@ public class Almacen {
 
     public void setCapacidad(int capacidad) {
         this.capacidad = capacidad;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Almacen almacen = (Almacen) o;
+        return identificador == almacen.identificador && capacidad == almacen.capacidad && Objects.equals(nombre, almacen.nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(identificador, nombre, capacidad);
+    }
+
+    @Override
+    public String toString() {
+        return "Almacen{" +
+                "identificador=" + identificador +
+                ", nombre='" + nombre + '\'' +
+                ", capacidad=" + capacidad +
+                '}';
     }
 }
